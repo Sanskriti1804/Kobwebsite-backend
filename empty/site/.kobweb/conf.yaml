@@ -1,0 +1,14 @@
+site:
+  title: "KobwebBackend"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/backendWebsite.js"
+      api: "build/libs/backendWebsite.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/backendWebsite.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
