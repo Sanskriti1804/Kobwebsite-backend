@@ -16,5 +16,21 @@ import org.jetbrains.compose.web.css.px
 
 @Composable
 fun ImageCard(breakpoint: Breakpoint){
-
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .thenIf(
+                condition = breakpoint > Breakpoint.MD,
+                other = Modifier.height((Res.Dimens.MAX_CARD_HEIGHT - 24).px)
+            )
+    ){
+        Image(
+            modifier = Modifier
+                .fillMaxSize()
+                .objectFit(
+                    ObjectFit.Cover
+                ),
+            src = Res.Image.PHOTO
+        )
+    }
 }
