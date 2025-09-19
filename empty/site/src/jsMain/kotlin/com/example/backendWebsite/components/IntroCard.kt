@@ -28,6 +28,7 @@ import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
 import com.varabyte.kobweb.silk.components.icons.fa.FaSun
 import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import org.jetbrains.compose.web.attributes.InputType
@@ -40,13 +41,14 @@ import org.jetbrains.compose.web.dom.Text
 
 
 @Composable
-fun IntroCard() {
+fun IntroCard(breakpoint: Breakpoint) {
     var userName by remember { mutableStateOf("") }
     var colorMode by ColorMode.currentState
 
     Column(
         modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = if (breakpoint <= Breakpoint.SM)
+            Alignment.CenterHorizontally else Alignment.Start,
         verticalArrangement = Arrangement.Center
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

@@ -21,8 +21,10 @@ import org.jetbrains.compose.web.css.px
 
 @Composable
 fun ProfileCard(){
-    val breakpoint = rememberBreakpoint()
+    val breakpoint = rememberBreakpoint()       //current screen size
     SimpleGrid(
+//On small screens (base), show 1 column.
+//On medium and larger screens (md), show 2 columns.
         numColumns = numColumns(base = 1, md = 2),
         modifier = Modifier
             .fillMaxWidth(
@@ -34,14 +36,15 @@ fun ProfileCard(){
                 other = Modifier.height(Res.Dimens.MAX_CARD_HEIGHT.px)
             )
             .boxShadow(
-                color = Colors.Black.copy(10),
+                color = Colors.Black.copy(1),
                 blurRadius = 50.px,
                 spreadRadius = 50.px
             )
             .padding(all = 12.px)
             .borderRadius( r = Res.Dimens.BORDER_RADIUS.px)
             .background(Colors.White)
-    ) {  }
-    IntroCard()
-    ImageCard()
+    ) {
+        IntroCard(breakpoint = breakpoint)
+        ImageCard(breakpoint = breakpoint)
+    }
 }
