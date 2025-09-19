@@ -21,7 +21,7 @@ fun ImageCard(breakpoint: Breakpoint){
             .fillMaxWidth()
             .thenIf(
                 condition = breakpoint > Breakpoint.MD,
-                other = Modifier.height((Res.Dimens.MAX_CARD_HEIGHT - 24).px)
+                other = Modifier.height((Res.Dimens.MAX_INTRO_CARD_HEIGHT - 24).px)
             )
     ){
         Image(

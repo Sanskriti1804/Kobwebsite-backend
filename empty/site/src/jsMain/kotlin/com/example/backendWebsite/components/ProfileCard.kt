@@ -15,7 +15,6 @@ import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
@@ -29,11 +28,11 @@ fun ProfileCard(){
         modifier = Modifier
             .fillMaxWidth(
                 if (breakpoint <= Breakpoint.MD) 100.percent
-                else Res.Dimens.MAX_CARD_WIDTH.px
+                else Res.Dimens.MAX_INTRO_CARD_WIDTH.px
             )
             .thenIf(
                 condition = breakpoint > Breakpoint.MD,
-                other = Modifier.height(Res.Dimens.MAX_CARD_HEIGHT.px)
+                other = Modifier.height(Res.Dimens.MAX_INTRO_CARD_HEIGHT.px)
             )
             .boxShadow(
                 color = Colors.Black.copy(1),

@@ -1,6 +1,7 @@
 package com.example.backendWebsite.pages
 
 import androidx.compose.runtime.*
+import com.example.backendWebsite.components.IntroCard
 import com.example.backendWebsite.components.ProfileCard
 import com.example.backendWebsite.utils.Res
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
@@ -12,6 +13,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
 import com.varabyte.kobweb.compose.ui.modifiers.border
@@ -32,8 +34,10 @@ import com.varabyte.kobweb.silk.components.icons.fa.IconSize
 import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
+import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.focus
 import com.varabyte.kobweb.silk.style.toModifier
+import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.palette.SilkWidgetColorGroups
 import com.varabyte.kobweb.silk.theme.colors.palette.link
@@ -58,20 +62,16 @@ import org.jetbrains.compose.web.dom.Text
 @Page
 @Composable
 fun HomePage() {
+    val breakpoint = rememberBreakpoint()
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .backgroundImage(
-                linearGradient(
-                    dir = LinearGradient.Direction.ToRight,
-                    from = Res.Theme.GRADIENT_ONE.color,
-                    to = Res.Theme.GRADIENT_TWO.color
-                )
+            .backgroundColor(
+                Res.Theme.VANILLA.color
             ),
         contentAlignment = Alignment.Center
     ){
-        ProfileCard(
-        )
+        IntroCard(breakpoint = breakpoint)
     }
 }
 
