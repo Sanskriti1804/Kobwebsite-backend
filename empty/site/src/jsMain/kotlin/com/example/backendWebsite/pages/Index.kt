@@ -1,6 +1,8 @@
 package com.example.backendWebsite.pages
 
 import androidx.compose.runtime.*
+import com.example.backendWebsite.components.ProfileCard
+import com.example.backendWebsite.utils.Res
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.css.functions.LinearGradient
 import com.varabyte.kobweb.compose.css.functions.linearGradient
@@ -56,79 +58,20 @@ import org.jetbrains.compose.web.dom.Text
 @Page
 @Composable
 fun HomePage() {
-    var userName by remember { mutableStateOf("") }
-    var colorMode by ColorMode.currentState
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            FaHeart(
-                modifier = Modifier.margin(right = 10.px),
-                style = IconStyle.OUTLINE,
-                size = IconSize.XXL
-            )
-            P(
-                attrs = Modifier
-                    .fontSize(40.px)
-                    .toAttrs()
-            ){
-                Text(
-                    value = "hiiii! $userName"
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .backgroundImage(
+                linearGradient(
+                    dir = LinearGradient.Direction.ToRight,
+                    from = Res.Theme.GRADIENT_ONE.color,
+                    to = Res.Theme.GRADIENT_TWO.color
                 )
-            }
-            FaHeart(
-                modifier = Modifier.margin(left = 10.px),
-                style = IconStyle.OUTLINE,
-                size = IconSize.XXL,
-            )
-
-        }
-
-        Input(
-            type = InputType.Text,
-            attrs = InputStyle.toModifier()
-                .padding(15.px)
-                .fontSize(20.px)
-                .backgroundImage(
-                    linearGradient(
-                        Theme.LPink.color, Theme.Pink.color, LinearGradient.Direction.ToBottomRight
-                    )
-                )
-//                .backgroundColor(Theme.LPink.color)
-                .transition{
-                    property("border")
-                    duration(500.ms)
-                    timingFunction(TransitionTimingFunction.EaseOut)
-                }
-                .toAttrs{
-                    placeholder(value = "Enter your email")
-                    onInput {
-                    userName = it.value
-                    }
-                }
+            ),
+        contentAlignment = Alignment.Center
+    ){
+        ProfileCard(
         )
-
-        Button(
-            modifier = Modifier.margin(top = 24.px).padding(12.px),
-            onClick = {
-                colorMode = colorMode.opposite
-            }
-        ) {
-            if (colorMode.isLight) {
-                FaMoon(
-                    style = IconStyle.OUTLINE,
-                    size = IconSize.XXL,
-                )
-            }
-            else
-                FaSun(
-                    style = IconStyle.OUTLINE,
-                    size = IconSize.XXL,
-                )
-        }
     }
 }
 
