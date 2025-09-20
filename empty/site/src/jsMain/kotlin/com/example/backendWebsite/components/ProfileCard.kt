@@ -43,7 +43,7 @@ fun ProfileCard(){
             .borderRadius( r = Res.Dimens.BORDER_RADIUS.px)
             .background(Colors.White)
     ) {
-        IntroCard(breakpoint = breakpoint)
+        Intro(breakpoint = breakpoint)
         ImageCard(breakpoint = breakpoint)
     }
 }

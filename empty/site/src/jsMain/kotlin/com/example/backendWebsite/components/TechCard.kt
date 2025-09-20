@@ -7,6 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.example.backendWebsite.pages.InputStyle
 import com.example.backendWebsite.pages.Theme
+import com.example.backendWebsite.utils.Res
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -22,6 +23,7 @@ import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.css.functions.LinearGradient
 import com.varabyte.kobweb.compose.css.functions.linearGradient
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.silk.components.forms.Button
 import com.varabyte.kobweb.silk.components.icons.fa.FaHeart
 import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
@@ -46,7 +48,9 @@ fun TechCard(breakpoint: Breakpoint) {
     var colorMode by ColorMode.currentState
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .backgroundColor(Res.Theme.BASE_CARD.color),
         horizontalAlignment = if (breakpoint <= Breakpoint.SM)
             Alignment.CenterHorizontally else Alignment.Start,
         verticalArrangement = Arrangement.Center

@@ -1,69 +1,36 @@
 package com.example.backendWebsite.pages
 
 import androidx.compose.runtime.*
-import com.example.backendWebsite.components.IntroCard
+import com.example.backendWebsite.components.Intro
 import com.example.backendWebsite.components.ModuleCard
-import com.example.backendWebsite.components.ProfileCard
+import com.example.backendWebsite.components.TechCard
 import com.example.backendWebsite.utils.Res
-import com.varabyte.kobweb.compose.css.Overflow
-import com.varabyte.kobweb.compose.css.TransitionTimingFunction
-import com.varabyte.kobweb.compose.css.functions.LinearGradient
-import com.varabyte.kobweb.compose.css.functions.linearGradient
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
-import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
-import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.background
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
-import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
 import com.varabyte.kobweb.compose.ui.modifiers.border
-import com.varabyte.kobweb.compose.ui.modifiers.color
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
-import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
-import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.overflow
+import com.varabyte.kobweb.compose.ui.modifiers.minHeight
 import com.varabyte.kobweb.compose.ui.modifiers.padding
-import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
-import com.varabyte.kobweb.silk.SilkStyleSheet
-import com.varabyte.kobweb.silk.components.forms.Button
-import com.varabyte.kobweb.silk.components.icons.fa.FaHeart
-import com.varabyte.kobweb.silk.components.icons.fa.FaMoon
-import com.varabyte.kobweb.silk.components.icons.fa.FaSun
-import com.varabyte.kobweb.silk.components.icons.fa.IconSize
-import com.varabyte.kobweb.silk.components.icons.fa.IconStyle
 import com.varabyte.kobweb.silk.style.CssStyle
-import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.selectors.focus
-import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import com.varabyte.kobweb.silk.theme.colors.ColorMode
-import com.varabyte.kobweb.silk.theme.colors.palette.SilkWidgetColorGroups
-import com.varabyte.kobweb.silk.theme.colors.palette.link
-import com.varabyte.kobweb.silk.theme.colors.palette.toPalette
 import org.jetbrains.compose.web.attributes.InputType
-import org.jetbrains.compose.web.attributes.InputType.Button
 import org.jetbrains.compose.web.attributes.placeholder
 import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.LineStyle
-import org.jetbrains.compose.web.css.Transitions
-import org.jetbrains.compose.web.css.ms
-import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgb
 import org.jetbrains.compose.web.css.vh
+import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Input
-import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Text
-
-
 
 
 @Page
@@ -72,7 +39,8 @@ fun HomePage() {
     val breakpoint = rememberBreakpoint()
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .minHeight(100.vh)
             .padding(
                 if (breakpoint <= Breakpoint.MD) 18.px
                 else 32.px
@@ -83,29 +51,43 @@ fun HomePage() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(48.px)
     ){
-        IntroCard(breakpoint = breakpoint)
+        Intro(breakpoint = breakpoint)
 
-        Row(
-            modifier = Modifier
+        Div(
+            attrs = Modifier
                 .fillMaxWidth()
-                .height(
-                    if (breakpoint <= Breakpoint.MD) 100.percent
-                    else Res.Dimens.MAX_MODULE_SCROLL_HEIGHT.px
-                )
-                .overflow(Overflow.Auto)
-                .gap(16.px)
-        ){
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
-            ModuleCard(breakpoint, "Datatabase", "Postgres")
+                .height(Res.Dimens.MAX_MODULE_SCROLL_HEIGHT.px)
+                .toAttrs {
+                    style {
+                        property("display", "flex")
+                        property("flex-wrap", "nowrap")    // 👈 keep cards in one row
+                        property("overflow-x", "auto")     // 👈 horizontal scroll
+                        property("gap", "16px")
+                    }
+                }
+        ) {
+            ModuleCard(breakpoint, "Relational Database", "Supabase (PostgresSQL)")
+            ModuleCard(breakpoint, "Non-Relational Database", "MongoDb (KMongo)")
+            ModuleCard(breakpoint, "Vector Database", "Pinecode")
+            ModuleCard(breakpoint, "Container", "Docker")
+            ModuleCard(breakpoint, "Message Queues", "RabbitMQ")
+            ModuleCard(breakpoint, "Logs", "Logback")
+            ModuleCard(breakpoint, "Metrics", "Prometheus + Grafana")
+            ModuleCard(breakpoint, "Tracing", "Jaeger")
+            ModuleCard(breakpoint, "Secret and Configs", "Docker secrets")
+            ModuleCard(breakpoint, "Authentication & Security", "OAuth2 / OIDC + JWT + PKCE")
+            ModuleCard(breakpoint, "CI/CD", "GitHub Actions workflows")
+            ModuleCard(breakpoint, "AI / LLM Integration", "OpenAI GPT 3.5")
         }
+
+        TechCard(breakpoint)
+        TechCard(breakpoint)
+        TechCard(breakpoint)
+        TechCard(breakpoint)
+        TechCard(breakpoint)
+        TechCard(breakpoint)
+        TechCard(breakpoint)
+        TechCard(breakpoint)
     }
 }
 
