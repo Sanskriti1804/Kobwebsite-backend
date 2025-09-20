@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import com.example.backendWebsite.components.Intro
 import com.example.backendWebsite.components.ModuleCard
 import com.example.backendWebsite.components.TechCard
+import com.example.backendWebsite.components.WorkflowCard
 import com.example.backendWebsite.utils.Res
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -83,7 +84,18 @@ fun HomePage() {
         TechCard(breakpoint, Res.Image.PHOTO ,"Relational Database : Supabase(PostgresSQL)", "Purpose: Store well-defined, structured user data, predictions, and algorithm outputs", "Users, Birth Data, Astrology Chart, Numerology, Psychometrics, User Feedback - All core user info, algorithm results, and predictions stored here." )
         TechCard(breakpoint, Res.Image.PHOTO, "Non-Relational Database : MongoDb (KMongo)", "Purpose: Store semi-structured content, interpretations, logs, compatibility data.", "Interpretations, Compatibility, User Activity Logs - Flexible storage of evolving data, AI outputs, or logs")
         TechCard(breakpoint, Res.Image.PHOTO, "Vector Database (Semantic Layer) : Pinecone", "Purpose: Semantic search & AI-driven recommendations.", "User Embeddings, Archetype Embeddings, Insight Embeddings, Compatibility Embeddings - Convert structured/non-structured data → embeddings.")
-        TechCard(breakpoint, Res.Image.PHOTO, "Algorithms", "Purpose: Generate raw values for astrology, numerology, psychometrics.", "Astrology\n" +
+          TechCard(breakpoint, Res.Image.PHOTO, "Containers", "Docker containers for Ktor app + dependencies", "")
+        TechCard(breakpoint, Res.Image.PHOTO, "Message Queues", "RabbitMQ", "Async task processing, improves response time.")
+        TechCard(breakpoint, Res.Image.PHOTO, "Logs", "Logback", "")
+        TechCard(breakpoint, Res.Image.PHOTO, "metrics", "Prometheus + Grafana","")
+        TechCard(breakpoint, Res.Image.PHOTO, "traces", "","")
+        TechCard(breakpoint, Res.Image.PHOTO, "traces", "Jaeger","")
+        TechCard(breakpoint, Res.Image.PHOTO, "Secret and Configs", "Docker secrets","")
+        TechCard(breakpoint, Res.Image.PHOTO, "Authentication & Security", "OAuth2 / OIDC + JWT + PKCE","Backend verifies tokens per request")
+        TechCard(breakpoint, Res.Image.PHOTO, "CI/CD", "GitHub Actions workflows","workflows for build, test, deploy")
+        TechCard(breakpoint, Res.Image.PHOTO, "Models : OpenAI GPT 3.5 ", "RAG (Retrieval-Augmented Generation)","Combines vector DB + LLM → context-aware responses")
+
+        WorkflowCard(breakpoint, "Algorithms (Hardcoded Calculations)", "Generate raw values for astrology, numerology, psychometrics.", "Astrology\n" +
                 "\n" +
                 "Ephemeris calculations (planet positions)\n" +
                 "\n" +
@@ -103,17 +115,49 @@ fun HomePage() {
                 "\n" +
                 "Big5: Likert-scale → OCEAN scores\n" +
                 "\n" +
-                "Enneagram: scoring → type + wing - Output stored in relational DB.")
-        TechCard(breakpoint, Res.Image.PHOTO, "Containers", "Docker containers for Ktor app + dependencies", "")
-        TechCard(breakpoint, Res.Image.PHOTO, "Message Queues", "RabbitMQ", "Async task processing, improves response time.")
-        TechCard(breakpoint, Res.Image.PHOTO, "Logs", "Logback", "")
-        TechCard(breakpoint, Res.Image.PHOTO, "metrics", "Prometheus + Grafana","")
-        TechCard(breakpoint, Res.Image.PHOTO, "traces", "","")
-        TechCard(breakpoint, Res.Image.PHOTO, "traces", "Jaeger","")
-        TechCard(breakpoint, Res.Image.PHOTO, "Secret and Configs", "Docker secrets","")
-        TechCard(breakpoint, Res.Image.PHOTO, "Authentication & Security", "OAuth2 / OIDC + JWT + PKCE","Backend verifies tokens per request")
-        TechCard(breakpoint, Res.Image.PHOTO, "CI/CD", "GitHub Actions workflows","workflows for build, test, deploy")
-        TechCard(breakpoint, Res.Image.PHOTO, "Models : OpenAI GPT 3.5 ", "RAG (Retrieval-Augmented Generation)","Combines vector DB + LLM → context-aware responses")
+                "Enneagram: scoring → type + wing")
+
+        WorkflowCard(breakpoint, "Prediction Workflow", "Input\n" +
+                "\n" +
+                "User provides DOB, name, quiz answers.\n" +
+                "\n" +
+                "Algorithmic Computation\n" +
+                "\n" +
+                "Compute astrology chart, numerology, psychometrics.\n" +
+                "\n" +
+                "Save outputs in relational DB.\n" +
+                "\n" +
+                "Embedding\n" +
+                "\n" +
+                "Convert user profile → vector embedding.\n" +
+                "\n" +
+                "Store in vector DB.\n" +
+                "\n" +
+                "Prediction / Insight\n" +
+                "\n" +
+                "Query vector DB for closest archetypes / insights.\n" +
+                "\n" +
+                "Combine structured DB results + vector DB results.\n" +
+                "\n" +
+                "Optional LLM for final interpretation.\n" +
+                "\n" +
+                "Output\n" +
+                "\n" +
+                "Send prediction / interpretation to user.\n" +
+                "\n" +
+                "Feedback Loop\n" +
+                "\n" +
+                "Store user reactions in user_feedback.\n" +
+                "\n" +
+                "Use feedback to refine embeddings / ranking.",
+
+            "Relational DB → deterministic structured data\n" +
+                "\n" +
+                "Non-Relational DB → interpretations, logs\n" +
+                "\n" +
+                "Vector DB → semantic search & AI insights\n" +
+                "\n" +
+                "Algorithms → raw value generation")
     }
 }
 
