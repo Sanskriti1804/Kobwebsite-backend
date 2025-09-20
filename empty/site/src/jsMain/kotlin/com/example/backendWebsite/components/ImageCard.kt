@@ -24,13 +24,5 @@ fun ImageCard(breakpoint: Breakpoint){
                 other = Modifier.height((Res.Dimens.MAX_INTRO_CARD_HEIGHT - 24).px)
             )
     ){
-        Image(
-            modifier = Modifier
-                .fillMaxSize()
-                .objectFit(
-                    ObjectFit.Cover
-                ),
-            src = Res.Image.PHOTO
-        )
     }
 }

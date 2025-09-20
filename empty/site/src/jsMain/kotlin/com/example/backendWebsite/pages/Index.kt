@@ -80,14 +80,40 @@ fun HomePage() {
             ModuleCard(breakpoint, "AI / LLM Integration", "OpenAI GPT 3.5")
         }
 
-        TechCard(breakpoint)
-        TechCard(breakpoint)
-        TechCard(breakpoint)
-        TechCard(breakpoint)
-        TechCard(breakpoint)
-        TechCard(breakpoint)
-        TechCard(breakpoint)
-        TechCard(breakpoint)
+        TechCard(breakpoint, Res.Image.PHOTO ,"Relational Database : Supabase(PostgresSQL)", "Purpose: Store well-defined, structured user data, predictions, and algorithm outputs", "Users, Birth Data, Astrology Chart, Numerology, Psychometrics, User Feedback - All core user info, algorithm results, and predictions stored here." )
+        TechCard(breakpoint, Res.Image.PHOTO, "Non-Relational Database : MongoDb (KMongo)", "Purpose: Store semi-structured content, interpretations, logs, compatibility data.", "Interpretations, Compatibility, User Activity Logs - Flexible storage of evolving data, AI outputs, or logs")
+        TechCard(breakpoint, Res.Image.PHOTO, "Vector Database (Semantic Layer) : Pinecone", "Purpose: Semantic search & AI-driven recommendations.", "User Embeddings, Archetype Embeddings, Insight Embeddings, Compatibility Embeddings - Convert structured/non-structured data → embeddings.")
+        TechCard(breakpoint, Res.Image.PHOTO, "Algorithms", "Purpose: Generate raw values for astrology, numerology, psychometrics.", "Astrology\n" +
+                "\n" +
+                "Ephemeris calculations (planet positions)\n" +
+                "\n" +
+                "House system (Placidus / Whole Sign)\n" +
+                "\n" +
+                "Aspect detection (conjunction, square, trine, opposition)\n" +
+                "\n" +
+                "Numerology\n" +
+                "\n" +
+                "Pythagorean / Chaldean calculations\n" +
+                "\n" +
+                "Reduce numbers to core numbers: Life Path, Soul Urge\n" +
+                "\n" +
+                "Psychometrics\n" +
+                "\n" +
+                "MBTI: questionnaire → type assignment\n" +
+                "\n" +
+                "Big5: Likert-scale → OCEAN scores\n" +
+                "\n" +
+                "Enneagram: scoring → type + wing - Output stored in relational DB.")
+        TechCard(breakpoint, Res.Image.PHOTO, "Containers", "Docker containers for Ktor app + dependencies", "")
+        TechCard(breakpoint, Res.Image.PHOTO, "Message Queues", "RabbitMQ", "Async task processing, improves response time.")
+        TechCard(breakpoint, Res.Image.PHOTO, "Logs", "Logback", "")
+        TechCard(breakpoint, Res.Image.PHOTO, "metrics", "Prometheus + Grafana","")
+        TechCard(breakpoint, Res.Image.PHOTO, "traces", "","")
+        TechCard(breakpoint, Res.Image.PHOTO, "traces", "Jaeger","")
+        TechCard(breakpoint, Res.Image.PHOTO, "Secret and Configs", "Docker secrets","")
+        TechCard(breakpoint, Res.Image.PHOTO, "Authentication & Security", "OAuth2 / OIDC + JWT + PKCE","Backend verifies tokens per request")
+        TechCard(breakpoint, Res.Image.PHOTO, "CI/CD", "GitHub Actions workflows","workflows for build, test, deploy")
+        TechCard(breakpoint, Res.Image.PHOTO, "Models : OpenAI GPT 3.5 ", "RAG (Retrieval-Augmented Generation)","Combines vector DB + LLM → context-aware responses")
     }
 }
 
