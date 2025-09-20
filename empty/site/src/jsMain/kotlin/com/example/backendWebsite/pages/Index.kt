@@ -2,8 +2,10 @@ package com.example.backendWebsite.pages
 
 import androidx.compose.runtime.*
 import com.example.backendWebsite.components.IntroCard
+import com.example.backendWebsite.components.ModuleCard
 import com.example.backendWebsite.components.ProfileCard
 import com.example.backendWebsite.utils.Res
+import com.varabyte.kobweb.compose.css.Overflow
 import com.varabyte.kobweb.compose.css.TransitionTimingFunction
 import com.varabyte.kobweb.compose.css.functions.LinearGradient
 import com.varabyte.kobweb.compose.css.functions.linearGradient
@@ -19,8 +21,12 @@ import com.varabyte.kobweb.compose.ui.modifiers.backgroundImage
 import com.varabyte.kobweb.compose.ui.modifiers.border
 import com.varabyte.kobweb.compose.ui.modifiers.color
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
+import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
+import com.varabyte.kobweb.compose.ui.modifiers.gap
+import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.transition
 import com.varabyte.kobweb.compose.ui.toAttrs
@@ -49,6 +55,7 @@ import org.jetbrains.compose.web.css.CSSColorValue
 import org.jetbrains.compose.web.css.LineStyle
 import org.jetbrains.compose.web.css.Transitions
 import org.jetbrains.compose.web.css.ms
+import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgb
 import org.jetbrains.compose.web.css.vh
@@ -63,17 +70,59 @@ import org.jetbrains.compose.web.dom.Text
 @Composable
 fun HomePage() {
     val breakpoint = rememberBreakpoint()
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
+            .padding(
+                if (breakpoint <= Breakpoint.MD) 18.px
+                else 32.px
+            )
             .backgroundColor(
                 Res.Theme.VANILLA.color
             ),
-        contentAlignment = Alignment.Center
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(48.px)
     ){
         IntroCard(breakpoint = breakpoint)
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(
+                    if (breakpoint <= Breakpoint.MD) 100.percent
+                    else Res.Dimens.MAX_MODULE_SCROLL_HEIGHT.px
+                )
+                .overflow(Overflow.Auto)
+                .gap(16.px)
+        ){
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+            ModuleCard(breakpoint, "Datatabase", "Postgres")
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 enum class Theme(val color : CSSColorValue ){
     Pink(color = rgb(r = 251, g = 116, b = 168)),

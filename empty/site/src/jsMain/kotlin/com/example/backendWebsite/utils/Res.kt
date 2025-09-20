@@ -52,6 +52,7 @@ object Res {
     const val MAX_INTRO_CARD_HEIGHT = 300
     const val MAX_MODULE_CARD_HEIGHT = 300
     const val MAX_MODULE_CARD_WIDTH = 500
+    const val MAX_MODULE_SCROLL_HEIGHT = 350
     const val MAX_TECH_CARD_HEIGHT = 1500
     const val MAX_TECH_CARD_WIDTH = 600
     const val ICON_SIZE = 24

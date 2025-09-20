@@ -3,6 +3,7 @@ package com.example.backendWebsite.components
 import androidx.compose.runtime.Composable
 import com.example.backendWebsite.utils.Res
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
+import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -10,7 +11,6 @@ import com.varabyte.kobweb.compose.ui.graphics.Colors
 import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.color
-import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontFamily
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
@@ -29,50 +29,46 @@ import org.jetbrains.compose.web.dom.P
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-fun IntroCard(breakpoint: Breakpoint){
-    Row(
+fun ModuleCard(
+    breakpoint: Breakpoint,
+    moduleTitle : String,
+    moduleDesc : String
+    ){
+    Column(
         modifier = Modifier
             .fillMaxWidth(
                 if (breakpoint <= Breakpoint.MD) 100.percent
-                else Res.Dimens.MAX_INTRO_CARD_WIDTH.px
+                else Res.Dimens.MAX_MODULE_CARD_WIDTH.px
             )
             .thenIf(
                 condition = breakpoint > Breakpoint.MD,
-                other = Modifier.height(Res.Dimens.MAX_INTRO_CARD_HEIGHT.px)
+                other = Modifier.height(Res.Dimens.MAX_MODULE_CARD_HEIGHT.px)
 
             )
-            .padding(all = 25.px)
+            .padding(all = 12.px)
             .borderRadius(Res.Dimens.BORDER_RADIUS.px)
-            .backgroundColor(Res.Theme.ACCENT.color),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+            .backgroundColor(Res.Theme.DARK_CARD.color),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(15.px)
     ) {
-        FaStar(
-            modifier = Modifier
-                .margin(right = 20.px)
-                .color(Colors.White),
-            style = IconStyle.OUTLINE,
-            size = IconSize.X5,
-
-        )
         P(
             attrs = Modifier
-                .fontSize(50.px)
-                .color(Colors.White)
+                .fontSize(24.px)
+                .color(Colors.Black)
                 .fontFamily(Res.String.ROBOTO_CONDENSED)
                 .toAttrs()
-        ){
-            Text(
-                "BACKEND ARCHITECTURE OF AND ASTROLOGY APP"
-            )
+        ) {
+            Text(moduleTitle)
         }
-        FaStar(
-            modifier = Modifier
-                .margin(left = 10.px)
-                .color(Colors.White),
-            style = IconStyle.OUTLINE,
-            size = IconSize.X5,
 
-        )
+        P(
+            attrs = Modifier
+                .fontSize(16.px)
+                .color(Colors.Black.copy(50))
+                .fontFamily(Res.String.ROBOTO_REGULAR)
+                .toAttrs()
+        ) {
+            Text(moduleDesc)
+        }
     }
 }
